@@ -13,14 +13,12 @@ url_root = "https://www.rollingstone.com/contributor/peter-travers?page="
 #counting how many instances of triumph we find
 triumph_counter = 0
 #the regex that matches triumph, don't care if it's upper or lower case
-triumph_regex = re.compile(r'triumph|triumphant', re.I)
+triumph_regex = re.compile(r'triumph(ant)?', re.I)
 
 #each page has like 15 reviews on it. this is the base page
 page_urls = []
 #...and this is the page we will scrape for instances of the word 'triumph'
 review_urls = []
-#here's what we'll store our list of triumphs in
-triumph_list = []
 
 print("Let's see how often that hack Pete Travers uses the word 'triumph'!")
 #first get all the base pages
@@ -30,6 +28,7 @@ for counter in range(1,265):
 	page_count = page_count + 1
 print("Gathered "+str(len(page_urls))+" base pages...")
 #then get all the review urls from the base pages and put them in a list
+
 for review_url in page_urls:
 	r = get(review_url)
 	soup = BeautifulSoup(r.content, 'html.parser')
@@ -39,6 +38,7 @@ for review_url in page_urls:
 print("For a total of "+str(len(review_urls))+" reviews by Peter Travers.")
 
 #here's where the magic happens... i guess.
+#why am i doing this
 for review in review_urls:
 	r = get(review)
 	soup = BeautifulSoup(r.content, 'html.parser')

@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import re
 
 #there are currently 264 pages of Pete Travers reviews on Rolling Stone, start at page 1.
-page_count = 1
+#page_count = 1
 
 #the base url of pete travers' reviews
 url_root = "https://www.rollingstone.com/contributor/peter-travers?page="
@@ -23,9 +23,9 @@ review_urls = []
 print("Let's see how often that hack Pete Travers uses the word 'triumph'!")
 #first get all the base pages
 for counter in range(1,265):
-	cur_url = url_root+str(page_count)
+	cur_url = url_root+str(counter)
 	page_urls.append(cur_url)
-	page_count = page_count + 1
+	#page_count = page_count + 1
 print("Gathered "+str(len(page_urls))+" base pages...")
 #then get all the review urls from the base pages and put them in a list
 
